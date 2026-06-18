@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;TX Ops &amp; HR Dashboard&lt;/title&gt;</p>
+<p class="p1">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">*{box-sizing:border-box;margin:0;padding:0}</p>
+<p class="p1">body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#080b12;min-height:100vh;padding:1.5rem}</p>
+<p class="p1">.dash{background:#0f1117;border-radius:12px;padding:1.5rem;color:#e8eaf0;max-width:1200px;margin:0 auto}</p>
+<p class="p1">.topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:1.25rem}</p>
+<p class="p1">.topbar-title{font-size:18px;font-weight:500;color:#fff}</p>
+<p class="p1">.topbar-sub{font-size:12px;color:#6b7280;margin-top:2px}</p>
+<p class="p1">.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap}</p>
+<p class="p1">.filter-label{font-size:12px;color:#9ca3af}</p>
+<p class="p1">select{background:#1c2030;border:0.5px solid #2d3348;color:#e8eaf0;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;outline:none}</p>
+<p class="p1">select:hover{border-color:#4b5563}</p>
+<p class="p1">.tabs{display:flex;gap:4px;border-bottom:0.5px solid #1e2535;margin-bottom:1.25rem}</p>
+<p class="p1">.tab{padding:8px 16px;font-size:13px;color:#6b7280;border-radius:6px 6px 0 0;cursor:pointer;border:0.5px solid transparent;border-bottom:none;transition:all .15s}</p>
+<p class="p1">.tab:hover{color:#c9d0e0;background:#161b2a}</p>
+<p class="p1">.tab.active{color:#fff;background:#1c2030;border-color:#2d3348}</p>
+<p class="p1">.tab-panel{display:none}</p>
+<p class="p1">.tab-panel.active{display:block}</p>
+<p class="p1">.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.25rem}</p>
+<p class="p1">.mcard{background:#161b2a;border-radius:8px;padding:14px 16px;border:0.5px solid #1e2535}</p>
+<p class="p1">.mcard-label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}</p>
+<p class="p1">.mcard-val{font-size:24px;font-weight:500;color:#fff;line-height:1}</p>
+<p class="p1">.mcard-sub{font-size:11px;color:#9ca3af;margin-top:4px}</p>
+<p class="p1">.mcard-val.green{color:#34d399}</p>
+<p class="p1">.mcard-val.amber{color:#fbbf24}</p>
+<p class="p1">.mcard-val.red{color:#f87171}</p>
+<p class="p1">.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500}</p>
+<p class="p1">.badge.green{background:#052814;color:#34d399}</p>
+<p class="p1">.badge.amber{background:#2a1f05;color:#fbbf24}</p>
+<p class="p1">.badge.red{background:#200a0a;color:#f87171}</p>
+<p class="p1">.badge.blue{background:#051832;color:#60a5fa}</p>
+<p class="p1">.dot{width:6px;height:6px;border-radius:50%;display:inline-block}</p>
+<p class="p1">.dot.green{background:#34d399}.dot.amber{background:#fbbf24}.dot.red{background:#f87171}</p>
+<p class="p1">.matrix{width:100%;border-collapse:collapse;font-size:12px}</p>
+<p class="p1">.matrix th{background:#161b2a;color:#9ca3af;padding:8px 12px;text-align:left;font-weight:500;border-bottom:0.5px solid #1e2535}</p>
+<p class="p1">.matrix td{padding:9px 12px;border-bottom:0.5px solid #161b2a;color:#d1d5db;vertical-align:middle}</p>
+<p class="p1">.matrix tr:hover td{background:#161b2a}</p>
+<p class="p1">.scope-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}</p>
+<p class="p1">.scope-name{font-size:12px;color:#9ca3af;width:120px;flex-shrink:0}</p>
+<p class="p1">.scope-bar-wrap{flex:1;background:#1c2030;border-radius:4px;height:8px;overflow:hidden}</p>
+<p class="p1">.scope-bar-inner{height:8px;border-radius:4px}</p>
+<p class="p1">.scope-pct{font-size:11px;color:#6b7280;width:40px;text-align:right}</p>
+<p class="p1">.perf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}</p>
+<p class="p1">.perf-card{background:#161b2a;border:0.5px solid #1e2535;border-radius:8px;padding:14px 16px}</p>
+<p class="p1">.perf-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}</p>
+<p class="p1">.perf-name{font-size:13px;font-weight:500;color:#e8eaf0}</p>
+<p class="p1">.mini-bars{display:flex;gap:2px;align-items:flex-end;height:32px}</p>
+<p class="p1">.mini-bar{width:12px;border-radius:2px 2px 0 0}</p>
+<p class="p1">.win-tag{background:#052814;color:#34d399;font-size:10px;padding:2px 6px;border-radius:3px}</p>
+<p class="p1">.block-tag{background:#200a0a;color:#f87171;font-size:10px;padding:2px 6px;border-radius:3px}</p>
+<p class="p1">.tags-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}</p>
+<p class="p1">.feedback-section{margin-bottom:1.5rem}</p>
+<p class="p1">.section-head{font-size:13px;font-weight:500;color:#9ca3af;margin-bottom:10px;display:flex;align-items:center;gap:8px}</p>
+<p class="p1">.section-head span{height:0.5px;flex:1;background:#1e2535}</p>
+<p class="p1">.sticky-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}</p>
+<p class="p1">.sticky{border-radius:8px;padding:12px 14px;border:0.5px solid}</p>
+<p class="p1">.sticky.pos{background:#041a0e;border-color:#064d24;color:#a7f3d0}</p>
+<p class="p1">.sticky.neu{background:#0f111c;border-color:#2d3348;color:#9ca3af}</p>
+<p class="p1">.sticky.neg{background:#1a0404;border-color:#4d0606;color:#fca5a5}</p>
+<p class="p1">.sticky-quote{font-size:12px;line-height:1.6;margin-bottom:8px}</p>
+<p class="p1">.sticky-meta{font-size:10px;opacity:.6}</p>
+<p class="p1">.anon-badge{background:#1c2030;color:#6b7280;font-size:10px;padding:2px 6px;border-radius:3px;border:0.5px solid #2d3348}</p>
+<p class="p1">.section-title{font-size:14px;font-weight:500;color:#c9d0e0;margin:1rem 0 .75rem}</p>
+<p class="p1">.divider{height:0.5px;background:#1e2535;margin:1.25rem 0}</p>
+<p class="p1">.updated{font-size:11px;color:#374151;text-align:center;margin-top:1.5rem}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div class="dash"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="topbar-title"&gt;&lt;i class="ti ti-layout-dashboard" style="font-size:16px;margin-right:6px;opacity:.7"&gt;&lt;/i&gt;TX Ops &amp; HR Dashboard&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="topbar-sub" id="lastUpdated"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="filters"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="filter-label"&gt;&lt;i class="ti ti-filter" style="font-size:12px"&gt;&lt;/i&gt; Filter:&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;select id="teamFilter" onchange="applyFilters()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="all"&gt;All Teams&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="alpha"&gt;Team Alpha&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="beta"&gt;Team Beta&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="gamma"&gt;Team Gamma&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="delta"&gt;Team Delta&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;select id="riskFilter" onchange="applyFilters()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="all"&gt;All Risk Levels&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="low"&gt;Low Risk&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="medium"&gt;Medium Risk&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="high"&gt;High Risk&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab active" onclick="switchTab('commercials',this)"&gt;&lt;i class="ti ti-briefcase" style="font-size:13px;margin-right:5px"&gt;&lt;/i&gt;Commercials &amp; Ops&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="switchTab('performance',this)"&gt;&lt;i class="ti ti-chart-line" style="font-size:13px;margin-right:5px"&gt;&lt;/i&gt;Team Performance&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="switchTab('talent',this)"&gt;&lt;i class="ti ti-users" style="font-size:13px;margin-right:5px"&gt;&lt;/i&gt;Talent Insights&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tab-panel active" id="tab-commercials"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="metric-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Active contracts&lt;/div&gt;&lt;div class="mcard-val green"&gt;14&lt;/div&gt;&lt;div class="mcard-sub"&gt;+2 this quarter&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Contract value&lt;/div&gt;&lt;div class="mcard-val"&gt;$4.2M&lt;/div&gt;&lt;div class="mcard-sub"&gt;ARR&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;In-scope&lt;/div&gt;&lt;div class="mcard-val green"&gt;68%&lt;/div&gt;&lt;div class="mcard-sub"&gt;of deliverables&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Scope creep&lt;/div&gt;&lt;div class="mcard-val amber"&gt;32%&lt;/div&gt;&lt;div class="mcard-sub"&gt;flagged items&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;At-risk contracts&lt;/div&gt;&lt;div class="mcard-val red"&gt;3&lt;/div&gt;&lt;div class="mcard-sub"&gt;needs attention&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-title"&gt;Client contract health matrix&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="overflow-x:auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;table class="matrix"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Client&lt;/th&gt;&lt;th&gt;Team&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Scope&lt;/th&gt;&lt;th&gt;Risk&lt;/th&gt;&lt;th&gt;Renewal&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tbody id="contractBody"&gt;&lt;/tbody&gt;&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="divider"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-title"&gt;Scope tracking by project&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="scopeBars"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tab-panel" id="tab-performance"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="metric-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Avg team score&lt;/div&gt;&lt;div class="mcard-val green"&gt;8.1&lt;/div&gt;&lt;div class="mcard-sub"&gt;out of 10&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Top performer&lt;/div&gt;&lt;div class="mcard-val" style="font-size:16px;color:#60a5fa"&gt;Team Alpha&lt;/div&gt;&lt;div class="mcard-sub"&gt;Score: 9.2&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Monthly wins&lt;/div&gt;&lt;div class="mcard-val green"&gt;23&lt;/div&gt;&lt;div class="mcard-sub"&gt;across all teams&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Active blockers&lt;/div&gt;&lt;div class="mcard-val amber"&gt;7&lt;/div&gt;&lt;div class="mcard-sub"&gt;in resolution&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="perf-grid" id="perfCards"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="divider"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-title"&gt;6-month score trend&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px;font-size:12px;color:#6b7280" id="trendLegend"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="position:relative;width:100%;height:220px"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;canvas id="trendChart"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tab-panel" id="tab-talent"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="metric-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Self-reviews done&lt;/div&gt;&lt;div class="mcard-val green"&gt;87%&lt;/div&gt;&lt;div class="mcard-sub"&gt;completion rate&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Survey responses&lt;/div&gt;&lt;div class="mcard-val"&gt;142&lt;/div&gt;&lt;div class="mcard-sub"&gt;this cycle&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;eNPS score&lt;/div&gt;&lt;div class="mcard-val amber"&gt;+34&lt;/div&gt;&lt;div class="mcard-sub"&gt;target: +50&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="mcard"&gt;&lt;div class="mcard-label"&gt;Exit interviews&lt;/div&gt;&lt;div class="mcard-val"&gt;8&lt;/div&gt;&lt;div class="mcard-sub"&gt;anonymized&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="talentContent"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="updated" id="footerDate"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const now = new Date();</p>
+<p class="p1">const dateStr = now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});</p>
+<p class="p1">document.getElementById('lastUpdated').textContent = 'Last updated: ' + dateStr + ' · Q2 2026';</p>
+<p class="p1">document.getElementById('footerDate').textContent = 'TX Dashboard · ' + dateStr;</p>
+<p class="p2"><br></p>
+<p class="p1">const contracts=[</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Nexaflow Ltd",team:"alpha",value:"$620K",status:"Active",scope:"In-scope",risk:"low",renewal:"Aug 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Orbis Health",team:"beta",value:"$480K",status:"Active",scope:"Scope-creep",risk:"medium",renewal:"Oct 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Deltara Inc",team:"alpha",value:"$310K",status:"At risk",scope:"Scope-creep",risk:"high",renewal:"Jul 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Stratford Group",team:"gamma",value:"$750K",status:"Active",scope:"In-scope",risk:"low",renewal:"Dec 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Pinnacle AI",team:"delta",value:"$290K",status:"Active",scope:"In-scope",risk:"low",renewal:"Nov 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Veritas Systems",team:"beta",value:"$540K",status:"On hold",scope:"Scope-creep",risk:"high",renewal:"Sep 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Lumico Corp",team:"gamma",value:"$410K",status:"Active",scope:"In-scope",risk:"low",renewal:"Jan 2027"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Apex Retail",team:"alpha",value:"$185K",status:"Active",scope:"Scope-creep",risk:"medium",renewal:"Aug 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Crestwood FS",team:"delta",value:"$670K",status:"At risk",scope:"Scope-creep",risk:"high",renewal:"Jul 2026"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{client:"Meridian Co",team:"gamma",value:"$230K",status:"Active",scope:"In-scope",risk:"low",renewal:"Feb 2027"},</p>
+<p class="p1">];</p>
+<p class="p1">const scopeProjects=[</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Helios",team:"alpha",inscope:82,risk:"low"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Vega",team:"beta",inscope:55,risk:"high"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Orion",team:"gamma",inscope:91,risk:"low"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Sirius",team:"delta",inscope:63,risk:"medium"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Cassini",team:"alpha",inscope:78,risk:"low"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{name:"Project Nova",team:"beta",inscope:44,risk:"high"},</p>
+<p class="p1">];</p>
+<p class="p1">const teams=[</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:"alpha",name:"Team Alpha",score:9.2,trend:[8.4,8.6,8.9,9.0,9.1,9.2],wins:["Closed Nexaflow renewal","Delivered Helios on time","Zero missed SLAs in May"],blocks:["Minor budget reforecast needed"],color:"#34d399"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:"beta",name:"Team Beta",score:7.8,trend:[7.5,7.8,7.6,7.9,7.7,7.8],wins:["Onboarded Orbis Health","Completed sprint 14 backlog"],blocks:["Veritas scope creep unresolved","Resource gap — 1 open role"],color:"#60a5fa"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:"gamma",name:"Team Gamma",score:7.4,trend:[6.1,6.5,6.8,7.0,7.2,7.4],wins:["Recovery momentum +1.3 pts","Stratford client praised QBR"],blocks:["Dependency on Beta backlog","Q3 headcount not confirmed"],color:"#fbbf24"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:"delta",name:"Team Delta",score:7.0,trend:[8.0,7.8,7.5,7.2,7.1,7.0],wins:["Crestwood account retained"],blocks:["Score declining 3rd month","Crestwood at-risk flag","Manager transition pending"],color:"#f87171"},</p>
+<p class="p1">];</p>
+<p class="p1">const feedbackData={</p>
+<p class="p1"><span class="Apple-converted-space">  </span>selfReviews:[</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"I've grown significantly in stakeholder communication this half and want to continue building that skill.",sentiment:"pos",role:"Senior Analyst · Team Alpha"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"I met most of my goals but fell short on documentation — that's my focus area for Q3.",sentiment:"neu",role:"Engineer · Team Beta"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Proud of the recovery the team has made. I contributed to that and want to own more next cycle.",sentiment:"pos",role:"PM · Team Gamma"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Honestly, bandwidth has been an issue and it's affected my output quality. I need support here.",sentiment:"neg",role:"Designer · Team Delta"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>surveys:[</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"The culture here is collaborative and I feel genuinely supported by my manager.",sentiment:"pos",role:"Anonymous · eNPS +9"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Recognition could be more consistent. Sometimes wins go unnoticed above team level.",sentiment:"neg",role:"Anonymous · eNPS +3"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Workload is manageable most months but Q-end spikes are stressful — we should plan better.",sentiment:"neu",role:"Anonymous · eNPS +6"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Leadership communication has improved a lot since the all-hands format changed.",sentiment:"pos",role:"Anonymous · eNPS +10"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Would value more structured career paths. Growth feels unclear beyond 12 months.",sentiment:"neg",role:"Anonymous · eNPS +2"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>exitFeedback:[</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"The role evolved away from what I was hired for. Better scope clarity upfront would have helped.",sentiment:"neg",role:"Anonymized exit"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"No single reason — timing, a great external offer, and wanting a different challenge. Positive overall.",sentiment:"neu",role:"Anonymized exit"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Management was supportive but company direction felt uncertain during the restructure.",sentiment:"neg",role:"Anonymized exit"},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{text:"Loved the team and the work. Left purely for personal relocation reasons.",sentiment:"pos",role:"Anonymized exit"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>]</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">function statusBadge(s){const m={Active:"green","At risk":"red","On hold":"amber"};return`&lt;span class="badge ${m[s]||'blue'}"&gt;&lt;span class="dot ${m[s]||'blue'}"&gt;&lt;/span&gt;${s}&lt;/span&gt;`}</p>
+<p class="p1">function riskBadge(r){const m={low:"green",medium:"amber",high:"red"};return`&lt;span class="badge ${m[r]}"&gt;${r.charAt(0).toUpperCase()+r.slice(1)}&lt;/span&gt;`}</p>
+<p class="p1">function scopeBadge(s){return s==="In-scope"?`&lt;span class="badge green"&gt;In-scope&lt;/span&gt;`:`&lt;span class="badge amber"&gt;Scope-creep&lt;/span&gt;`}</p>
+<p class="p2"><br></p>
+<p class="p1">function renderContracts(tf,rf){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let rows=contracts.filter(c=&gt;(tf==="all"||c.team===tf)&amp;&amp;(rf==="all"||c.risk===rf));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("contractBody").innerHTML=rows.map(c=&gt;`&lt;tr&gt;&lt;td style="font-weight:500;color:#e8eaf0"&gt;${c.client}&lt;/td&gt;&lt;td&gt;&lt;span class="badge blue"&gt;${c.team.charAt(0).toUpperCase()+c.team.slice(1)}&lt;/span&gt;&lt;/td&gt;&lt;td&gt;${c.value}&lt;/td&gt;&lt;td&gt;${statusBadge(c.status)}&lt;/td&gt;&lt;td&gt;${scopeBadge(c.scope)}&lt;/td&gt;&lt;td&gt;${riskBadge(c.risk)}&lt;/td&gt;&lt;td style="color:#6b7280"&gt;${c.renewal}&lt;/td&gt;&lt;/tr&gt;`).join("");</p>
+<p class="p1">}</p>
+<p class="p1">function renderScope(tf,rf){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let projs=scopeProjects.filter(p=&gt;(tf==="all"||p.team===tf)&amp;&amp;(rf==="all"||p.risk===rf));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("scopeBars").innerHTML=projs.map(p=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const c=p.inscope&gt;=80?"#34d399":p.inscope&gt;=60?"#fbbf24":"#f87171";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return`&lt;div class="scope-row"&gt;&lt;span class="scope-name"&gt;${p.name}&lt;/span&gt;&lt;div class="scope-bar-wrap"&gt;&lt;div class="scope-bar-inner" style="width:${p.inscope}%;background:${c}"&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class="scope-pct"&gt;${p.inscope}%&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).join("");</p>
+<p class="p1">}</p>
+<p class="p1">function renderPerf(tf){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let t=teams.filter(t=&gt;tf==="all"||t.id===tf);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("perfCards").innerHTML=t.map(tm=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const maxV=Math.max(...tm.trend),minV=Math.min(...tm.trend);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const bars=tm.trend.map(v=&gt;{const h=Math.round(8+((v-minV)/(maxV-minV+.001))*22);return`&lt;div class="mini-bar" style="height:${h}px;background:${tm.color};opacity:.8"&gt;&lt;/div&gt;`}).join("");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dir=tm.trend[5]&gt;tm.trend[0]?"↑":"↓";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dirColor=tm.trend[5]&gt;tm.trend[0]?"#34d399":"#f87171";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return`&lt;div class="perf-card"&gt;&lt;div class="perf-header"&gt;&lt;span class="perf-name"&gt;${tm.name}&lt;/span&gt;&lt;span style="font-size:20px;font-weight:500;color:${tm.color}"&gt;${tm.score}&lt;/span&gt;&lt;/div&gt;&lt;div style="display:flex;gap:8px;align-items:center;margin-bottom:6px"&gt;&lt;span style="font-size:10px;color:#6b7280;width:60px"&gt;6-month&lt;/span&gt;&lt;div class="mini-bars"&gt;${bars}&lt;/div&gt;&lt;span style="font-size:13px;margin-left:4px;color:${dirColor}"&gt;${dir}&lt;/span&gt;&lt;/div&gt;&lt;div class="tags-row"&gt;${tm.wins.map(w=&gt;`&lt;span class="win-tag"&gt;✓ ${w}&lt;/span&gt;`).join("")}${tm.blocks.map(b=&gt;`&lt;span class="block-tag"&gt;⚠ ${b}&lt;/span&gt;`).join("")}&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).join("");</p>
+<p class="p1">}</p>
+<p class="p1">function renderTalent(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sections=[{key:"selfReviews",label:"Self-reviews",icon:"ti-user"},{key:"surveys",label:"Pulse survey feedback",icon:"ti-message"},{key:"exitFeedback",label:"Terminated talent feedback",icon:"ti-lock",anon:true}];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("talentContent").innerHTML=sections.map(s=&gt;`&lt;div class="feedback-section"&gt;&lt;div class="section-head"&gt;&lt;i class="ti ${s.icon}" style="font-size:13px"&gt;&lt;/i&gt;${s.label}${s.anon?` &lt;span class="anon-badge"&gt;&lt;i class="ti ti-shield-check" style="font-size:10px"&gt;&lt;/i&gt; strictly anonymized&lt;/span&gt;`:""}&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class="sticky-grid"&gt;${feedbackData[s.key].map(f=&gt;`&lt;div class="sticky ${f.sentiment}"&gt;&lt;div class="sticky-quote"&gt;"${f.text}"&lt;/div&gt;&lt;div class="sticky-meta"&gt;${f.role}&lt;/div&gt;&lt;/div&gt;`).join("")}&lt;/div&gt;&lt;/div&gt;`).join("");</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">let trendChart=null;</p>
+<p class="p1">function renderTrendChart(tf){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ctx=document.getElementById("trendChart");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!ctx)return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(trendChart){trendChart.destroy();trendChart=null;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const filtered=teams.filter(t=&gt;tf==="all"||t.id===tf);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const dashes=[[],[6,3],[3,3],[8,3,2,3]];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const datasets=filtered.map((t,i)=&gt;({label:t.name,data:t.trend,borderColor:t.color,backgroundColor:"transparent",tension:.4,borderWidth:2,borderDash:dashes[i]||[],pointRadius:3,pointBackgroundColor:t.color}));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("trendLegend").innerHTML=filtered.map(t=&gt;`&lt;span style="display:flex;align-items:center;gap:4px"&gt;&lt;span style="width:10px;height:10px;border-radius:2px;background:${t.color}"&gt;&lt;/span&gt;${t.name} — ${t.score}&lt;/span&gt;`).join("");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>trendChart=new Chart(ctx,{type:"line",data:{labels:["Jan","Feb","Mar","Apr","May","Jun"],datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:"rgba(255,255,255,.05)"},ticks:{color:"#6b7280",font:{size:11}}},y:{min:5,max:10,grid:{color:"rgba(255,255,255,.05)"},ticks:{color:"#6b7280",font:{size:11},stepSize:1}}}}});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function applyFilters(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const tf=document.getElementById("teamFilter").value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const rf=document.getElementById("riskFilter").value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderContracts(tf,rf);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderScope(tf,rf);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderPerf(tf);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderTrendChart(tf);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function switchTab(name,el){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll(".tab").forEach(t=&gt;t.classList.remove("active"));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll(".tab-panel").forEach(p=&gt;p.classList.remove("active"));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add("active");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("tab-"+name).classList.add("active");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(name==="performance"){setTimeout(()=&gt;renderTrendChart(document.getElementById("teamFilter").value),50);}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">renderContracts("all","all");</p>
+<p class="p1">renderScope("all","all");</p>
+<p class="p1">renderTalent();</p>
+<p class="p1">renderTrendChart("all");</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
