@@ -38,21 +38,20 @@
 
   <tr><td style="padding:32px 40px;">
     <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#55600A;font-weight:bold;margin:0 0 8px 0;">This issue's prompt</p>
-    <h2 style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:22px;color:#181917;margin:0 0 18px 0;">The AI Visibility Snapshot</h2>
+    <h2 style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:22px;color:#181917;margin:0 0 18px 0;">The Meeting-to-Action Converter</h2>
     <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:#55600A;font-weight:bold;margin:0 0 4px 0;">Use case</p>
-    <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:14px;color:#6E6E6B;margin:0 0 16px 0;line-height:1.5;">Clients are increasingly discovered through AI answer engines - ChatGPT, Claude, Gemini, Perplexity - not just search rankings. Use this prompt to quickly sanity-check how a brand is likely represented in AI-generated answers and turn it into a client-ready recommendation.</p>
+    <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:14px;color:#6E6E6B;margin:0 0 16px 0;line-height:1.5;">Turn a raw meeting transcript or notes dump - Ops sync, Finance review, leadership check-in, Talent standup, whatever it was - into a clean list of who owns what and by when. Works the same whether you're coming out of a client call or an internal planning session.</p>
     <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:#55600A;font-weight:bold;margin:0 0 4px 0;">Expected outcome</p>
-    <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:14px;color:#6E6E6B;margin:0 0 18px 0;line-height:1.5;">A sub-250-word snapshot flagging facts an AI might get wrong or omit, inconsistencies across public sources, and three concrete fixes to make the brand easier for AI systems to represent accurately.</p>
+    <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:14px;color:#6E6E6B;margin:0 0 18px 0;line-height:1.5;">A table of action items with owner, due date, and priority, ready to paste straight into ClickUp - with anything ambiguous flagged instead of quietly guessed.</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F2F2F0;border:1px solid #E3E3E0;border-radius:6px;">
-      <tr><td style="padding:16px 18px;font-family:'Courier New', Courier, monospace;font-size:12px;color:#181917;line-height:1.6;">Act as a brand visibility strategist specializing in how brands appear in AI answer engines (ChatGPT, Claude, Gemini, Perplexity). Here is public information about [BRAND]: [PASTE WEBSITE COPY / ABOUT PAGE / RECENT PRESS]. Based only on this, describe how an AI assistant would likely summarize this brand if a customer asked "What does [BRAND] do and why should I choose them?" Then flag: 1) any facts an AI might get wrong or omit, 2) inconsistencies across the sources, 3) three concrete fixes to make the brand easier for AI systems to represent accurately (e.g. clearer About page, structured FAQ, consistent brand facts). Keep the whole output under 250 words. Audience: [CLIENT STAKEHOLDER LEVEL].</td></tr>
+      <tr><td style="padding:16px 18px;font-family:'Courier New', Courier, monospace;font-size:12px;color:#181917;line-height:1.6;">Here are my raw meeting notes: [PASTE NOTES]. Extract all action items into a table with columns: Action, Owner, Due Date, Priority. Flag anything ambiguous with [NEEDS OWNER] instead of guessing.</td></tr>
     </table>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
     <tr><td style="padding-top:16px;">
-      <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:13px;color:#6E6E6B;font-style:italic;margin:0 0 10px 0;">We ran this on a sample brand first - here's a trimmed version of what came back:</p>
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F2F2F0;border:1px solid #E3E3E0;border-radius:6px;margin-bottom:14px;">
-        <tr><td style="padding:16px 18px;font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:12.5px;color:#181917;line-height:1.6;">"An AI assistant would likely describe this brand accurately on category and offer, but would probably omit its embedded/in-house delivery model - the single biggest differentiator - because it isn't stated plainly anywhere above the fold. Inconsistency: pricing philosophy is implied on one page and contradicted in a case study. Fixes: 1) State the embedded-team model in the first line of the About page, not the third paragraph. 2) Add a short structured FAQ answering 'how is this different from an agency?' in plain language AI can quote directly. 3) Align the pricing narrative across all public pages so no single source looks like the odd one out."</td></tr>
-      </table>
-      <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:13px;color:#6E6E6B;margin:0;">Try it on one of your own accounts and drop what you find in the feedback form below - the best ones get featured next issue.</p>
+      <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:13px;color:#6E6E6B;font-style:italic;margin:0 0 10px 0;">We ran this exact prompt ourselves - here's what came back:</p>
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+        <td><a href="https://claude.ai/code/artifact/0dd054d3-810f-489e-81d2-c8e1b0ca80fc" style="display:inline-block;background-color:#D6FE00;color:#181917;font-family:'Montserrat', Arial, Helvetica, sans-serif;font-weight:bold;font-size:13px;padding:9px 16px;border-radius:6px;text-decoration:none;">View the Claude output &rarr;</a></td>
+      </tr></table>
     </td></tr></table>
   </td></tr>
 
@@ -94,7 +93,7 @@
           <td style="padding-left:6px;">
             <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:15px;color:#181917;font-weight:bold;margin:0 0 4px 0;">Brands are now being audited for how AI describes them</p>
             <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:13px;color:#6E6E6B;margin:0 0 6px 0;line-height:1.5;">"AI visibility" has become its own software category in 2026 - tools now track whether a brand gets cited when ChatGPT, Claude, Perplexity, or Gemini answer category questions, and where competitors are winning the citation instead.</p>
-            <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:12px;color:#181917;margin:0 0 6px 0;"><b style="color:#55600A;">For us:</b> This is exactly the gap this issue's prompt is built for - a real conversation starter with clients who ask "why isn't AI recommending us?"</p>
+            <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:12px;color:#181917;margin:0 0 6px 0;"><b style="color:#55600A;">For us:</b> Not a Core-wide task, but worth flagging for Talent - this is becoming a real question clients ask about their own brands.</p>
             <p style="font-family:'Montserrat', Arial, Helvetica, sans-serif;font-size:12px;margin:0;"><a href="https://www.marketscale.com/industries/marketing-tech/ai-answer-engine-visibility-becomes-a-measurable-discipline-as-geo-platforms-multiply-in-2026" style="color:#55600A;font-weight:bold;text-decoration:underline;">Read more &rarr;</a></p>
           </td>
         </tr>
