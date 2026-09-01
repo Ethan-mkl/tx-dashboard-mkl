@@ -17,17 +17,38 @@ Insights (self-reviews / pulse surveys / exit feedback).
 ## Admin agent team
 
 `.claude/agents/` defines a small delegation hierarchy for running admin work
-against this project:
+assigned by Ethan — not just work on this dashboard file:
 
 - **master-orchestrator** — entry point for open-ended or multi-part admin
-  requests. Triages and delegates, doesn't do the work itself.
-- **ops-agent** — delivery status, scope creep, renewal/delivery risk, team
-  performance.
-- **finance-agent** — contract value, revenue exposure, renewal forecasting,
-  billing-style admin.
+  requests. Triages and delegates. Also the mandatory review gate for
+  ops-agent: ops-agent executes tasks, but its output must pass through
+  master-orchestrator's review before it reaches Ethan.
+- **ops-agent** — runs all ops-related admin tasks Ethan assigns (delivery
+  status, scope creep, renewal/delivery risk, team performance, general ops
+  chores), executing where needed. Never reports completed work straight to
+  Ethan without master-orchestrator reviewing it first.
+- **finance-agent** — invoice tracking from email, finance-sheet updates,
+  contract value/revenue exposure, renewal forecasting. Reports routine
+  highlights (invoices due, timelines) directly to Ethan.
 
 For a broad request ("give me the weekly admin rundown", "what needs
 attention"), invoke `master-orchestrator`. For a request that's clearly and
 entirely one domain, it's faster to call `ops-agent` or `finance-agent`
-directly. Neither specialist covers HR/talent data (self-reviews, surveys,
-exit feedback) — that's intentionally out of scope for now.
+directly — though ops-agent will still loop master-orchestrator in for review
+before calling anything done. Neither specialist covers HR/talent data
+(self-reviews, surveys, exit feedback) — that's intentionally out of scope
+for now.
+
+### Connector status (check before relying on finance-agent's email/sheet work)
+
+- **Google Drive** — connected. Can search/read/download existing files
+  (including Google Sheets content) and create new files. Cannot edit an
+  existing sheet's cells in place.
+- **Google Calendar** — connected at the org level, not yet enabled for chat.
+- **Email (Gmail or similar)** — not connected at all. Until it is,
+  finance-agent cannot scan inboxes for invoices or surface email reminders,
+  and will say so rather than fabricating results.
+
+Connect these via claude.ai → Settings → Connectors. Once done, finance-agent
+picks them up automatically — no changes needed here unless the available
+tool names differ from what's listed in `finance-agent.md`'s frontmatter.
