@@ -20,22 +20,23 @@ Insights (self-reviews / pulse surveys / exit feedback).
 assigned by Ethan — not just work on this dashboard file:
 
 - **master-orchestrator** — entry point for open-ended or multi-part admin
-  requests. Triages and delegates. Also the mandatory review gate for
-  ops-agent: ops-agent executes tasks, but its output must pass through
-  master-orchestrator's review before it reaches Ethan.
+  requests. Triages and delegates. Also the mandatory review gate for both
+  specialists: neither ops-agent nor finance-agent's output reaches Ethan
+  without passing through master-orchestrator's review first.
 - **ops-agent** — runs all ops-related admin tasks Ethan assigns (delivery
   status, scope creep, renewal/delivery risk, team performance, general ops
   chores), executing where needed. Never reports completed work straight to
   Ethan without master-orchestrator reviewing it first.
 - **finance-agent** — invoice tracking from email, finance-sheet updates,
-  contract value/revenue exposure, renewal forecasting. Reports routine
-  highlights (invoices due, timelines) directly to Ethan.
+  contract value/revenue exposure, renewal forecasting. Same review-gate
+  rule as ops-agent — even "routine" invoice/timeline highlights go through
+  master-orchestrator before reaching Ethan.
 
 For a broad request ("give me the weekly admin rundown", "what needs
 attention"), invoke `master-orchestrator`. For a request that's clearly and
 entirely one domain, it's faster to call `ops-agent` or `finance-agent`
-directly — though ops-agent will still loop master-orchestrator in for review
-before calling anything done. Neither specialist covers HR/talent data
+directly — though both still loop master-orchestrator in for review before
+calling anything done. Neither specialist covers HR/talent data
 (self-reviews, surveys, exit feedback) — that's intentionally out of scope
 for now.
 
